@@ -8,13 +8,18 @@ package eval
 	val Evaluator
 }
 
-%type	<val>	expr term factor power
+%type	<val>	top expr term factor power
 
 %token '+' '-' '*' '/' '(' ')'
 
 %token	<val> CONST VAR
 
 %%
+top:
+	expr
+	{
+		yylex.(*exprLex).val = $1
+	}
 
 expr:
 	term

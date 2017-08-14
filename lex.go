@@ -2,7 +2,6 @@ package eval
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 	"text/scanner"
 )
@@ -16,15 +15,16 @@ const eof = 0
 type exprLex struct {
 	scan scanner.Scanner
 	err  error
+	val  Evaluator
 }
 
 // The parser calls this method to get each new token.
 func (x *exprLex) Lex(yylval *yySymType) int {
-	v := x.lex(yylval)
-	log.Printf("lex: %d %v", v, yylval)
-	return v
-}
-func (x *exprLex) lex(yylval *yySymType) int {
+	// 	v := x.lex(yylval)
+	// 	log.Printf("lex: %d %v", v, yylval)
+	// 	return v
+	// }
+	// func (x *exprLex) lex(yylval *yySymType) int {
 	r := x.scan.Scan()
 	switch r {
 	case scanner.Ident:

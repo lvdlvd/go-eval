@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	expr ".."
+	"github.com/lvdlvd/go-eval"
 )
 
 func main() {
@@ -24,11 +24,11 @@ func main() {
 			log.Fatalf("ReadBytes: %s", err)
 		}
 
-		eval, err := expr.Parse(string(line))
+		e, err := eval.Parse(string(line))
 		if err != nil {
 			log.Fatalln(err)
 		}
-		fmt.Println(eval)
-		fmt.Println(eval.Evaluate(map[string]float64{"foo": 42}))
+		fmt.Println(e)
+		fmt.Println(e.Evaluate(map[string]float64{"foo": 42}))
 	}
 }

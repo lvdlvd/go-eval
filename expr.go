@@ -32,7 +32,7 @@ const yyEofCode = 1
 const yyErrCode = 2
 const yyInitialStackSize = 16
 
-//line expr.y:61
+//line expr.y:66
 
 //line yacctab:1
 var yyExca = [...]int{
@@ -43,45 +43,45 @@ var yyExca = [...]int{
 
 const yyPrivate = 57344
 
-const yyLast = 30
+const yyLast = 27
 
 var yyAct = [...]int{
 
-	6, 3, 4, 21, 2, 9, 5, 7, 8, 9,
-	0, 7, 8, 14, 15, 19, 20, 17, 18, 1,
-	10, 11, 0, 12, 13, 0, 0, 0, 0, 16,
+	7, 4, 5, 22, 3, 10, 6, 8, 9, 10,
+	1, 8, 9, 15, 16, 2, 20, 21, 18, 19,
+	13, 14, 11, 12, 0, 0, 17,
 }
 var yyPact = [...]int{
 
-	-3, -1000, 16, -3, -3, 7, -1000, -1000, -1000, -3,
-	1, 1, -1000, -1000, 1, 1, -6, 7, 7, -1000,
-	-1000, -1000,
+	-3, -1000, -1000, 18, -3, -3, 7, -1000, -1000, -1000,
+	-3, 1, 1, -1000, -1000, 1, 1, -6, 7, 7,
+	-1000, -1000, -1000,
 }
 var yyPgo = [...]int{
 
-	0, 19, 4, 6, 0,
+	0, 10, 15, 4, 6, 0,
 }
 var yyR1 = [...]int{
 
-	0, 1, 1, 1, 2, 2, 2, 3, 3, 3,
-	4, 4, 4,
+	0, 1, 2, 2, 2, 3, 3, 3, 4, 4,
+	4, 5, 5, 5,
 }
 var yyR2 = [...]int{
 
-	0, 1, 2, 2, 1, 3, 3, 1, 3, 3,
-	1, 1, 3,
+	0, 1, 1, 2, 2, 1, 3, 3, 1, 3,
+	3, 1, 1, 3,
 }
 var yyChk = [...]int{
 
-	-1000, -1, -2, 4, 5, -3, -4, 10, 11, 8,
-	4, 5, -1, -1, 6, 7, -1, -3, -3, -4,
-	-4, 9,
+	-1000, -1, -2, -3, 4, 5, -4, -5, 10, 11,
+	8, 4, 5, -2, -2, 6, 7, -2, -4, -4,
+	-5, -5, 9,
 }
 var yyDef = [...]int{
 
-	0, -2, 1, 0, 0, 4, 7, 10, 11, 0,
-	0, 0, 2, 3, 0, 0, 0, 5, 6, 8,
-	9, 12,
+	0, -2, 1, 2, 0, 0, 5, 8, 11, 12,
+	0, 0, 0, 3, 4, 0, 0, 0, 6, 7,
+	9, 10, 13,
 }
 var yyTok1 = [...]int{
 
@@ -436,45 +436,51 @@ yydefault:
 	// dummy call; replaced with literal code
 	switch yynt {
 
-	case 2:
-		yyDollar = yyS[yypt-2 : yypt+1]
-		//line expr.y:22
+	case 1:
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line expr.y:20
 		{
-			yyVAL.val = yyDollar[2].val
+			yylex.(*exprLex).val = yyDollar[1].val
 		}
 	case 3:
 		yyDollar = yyS[yypt-2 : yypt+1]
-		//line expr.y:26
+		//line expr.y:27
+		{
+			yyVAL.val = yyDollar[2].val
+		}
+	case 4:
+		yyDollar = yyS[yypt-2 : yypt+1]
+		//line expr.y:31
 		{
 			yyVAL.val = neg{yyDollar[2].val}
 		}
-	case 5:
+	case 6:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line expr.y:33
+		//line expr.y:38
 		{
 			yyVAL.val = add{yyDollar[1].val, yyDollar[3].val}
 		}
-	case 6:
+	case 7:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line expr.y:37
+		//line expr.y:42
 		{
 			yyVAL.val = add{yyDollar[1].val, neg{yyDollar[3].val}}
 		}
-	case 8:
+	case 9:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line expr.y:44
+		//line expr.y:49
 		{
 			yyVAL.val = mul{yyDollar[1].val, yyDollar[3].val}
 		}
-	case 9:
+	case 10:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line expr.y:48
+		//line expr.y:53
 		{
 			yyVAL.val = mul{yyDollar[1].val, inv{yyDollar[3].val}}
 		}
-	case 12:
+	case 13:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line expr.y:56
+		//line expr.y:61
 		{
 			yyVAL.val = yyDollar[2].val
 		}
